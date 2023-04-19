@@ -1,0 +1,15 @@
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(7, 8);
+String name = "Raghul's House";
+int state = LOW; 
+int val = 0; 
+int PIR_output=2; 
+int buzzer=12; 
+int led = 13; 
+void setup() {
+pinMode(led, OUTPUT); 
+pinMode(PIR_output, INPUT); 
+Serial.begin(9600); 
+Serial.println("Welcome to Home Security");
+mySerial.begin(9600);
+}
