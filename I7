@@ -1,0 +1,43 @@
+import picamera
+
+camera picamera2.Picamera2()
+
+camera.resolution-(1024,768) Camera.brightness-200
+
+from picamera2 import Preview from time import sleep sleep(2)
+
+camera.start preview(Preview.OTGL)
+
+camera.start() print(" Image is capturing)
+
+camera.title fields-["Exposure Time"] camera.capture_file(/home/students/Documents/20dx07.jpg")
+
+camera.stop_preview() print(image has been captured successfully !!!")
+
+print("20dx07")
+
+from picameral import Picamera2, Preview
+
+import time
+
+import picamera2
+
+Camera-picamera2 Picamera2()
+
+Camera.resolution-(1024, 768)
+
+Camera.brightness 80
+
+print(" Started recording ")
+
+Camera.start and record
+
+video("/home/students/Documents/20dx06.mp4",\
+
+duration 5, show preview-True)
+
+Camera.stop()
+
+print( Stopped Recording")
+
+print("20dx07")
