@@ -1,0 +1,75 @@
+import RPI.GPIO as a
+
+import time
+
+a.setwarnings(False)
+
+a.setmode(a.BOARD)
+
+a.setup(36, a.OUT) a.setup(38, a.OUT)
+
+a.setup(40, a.OUT)
+
+print("Sequential switching using raspberry pi")
+
+75%
+
+print("20DX07")
+
+try:
+
+while True:
+
+a.output(36, 0)
+
+a.output(38, 1)
+
+a.output(40, 1)
+
+print("relay 1 is on")
+
+print("relay 2 is off")
+
+print("relay 3 is off")
+
+print("Cycle 1 completed")
+
+time.sleep(5)
+
+a.output(36, 1)
+
+a.output(38, 0)
+
+a.output(40, 1)
+
+print("relay 1 is off")
+
+print("relay 2 is on")
+
+print("relay 3 is off")
+
+print("Cycle 2 completed")
+
+time.sleep(5)
+
+a.output(36, 1)
+
+a.output(38, 1)
+
+a.output(40, 0)
+
+print("relay 1 is off")
+
+print("relay 2 is off")
+
+print("relay 3 is on")
+
+print("Cycle 3 completed")
+
+time.sleep(5)
+
+except KeyboardInterrupt:
+
+a.output(36, 1)
+
+a.output(38, 1) a.output(40, 1)
