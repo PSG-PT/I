@@ -1,0 +1,30 @@
+import RPi.GPIO as GPIO
+from time import sleep
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+ENA,IN1,IN2=12,35,37
+GPIO.setup(ENA,GPIO.OUT)
+GPIO.setup(IN1,GPIO.OUT)
+GPIO.setup(IN2,GPIO.OUT)
+pwm=GPIO.PWM(ENA,100)
+pwm.start(0)
+print(“”)
+try:
+    while True:
+        print("Loop running")
+        GPIO.output(IN1,GPIO.LOW)
+        GPIO.output(IN2,GPIO.HIGH)
+        print("Motor Running Forward")
+        pwm.ChangeDutyCycle(35)
+        print("Duty cycle:35")
+        sleep(2)
+        GPIO.output(IN1,GPIO.HIGH)
+        GPIO.output(IN2,GPIO.LOW)
+        print("Motor Running Reserve")
+        pwm.ChangeDutyCycle(40)
+        print("Duty cycle:40")
+        sleep(2)
+except KeyboardInterrupt:
+        GPIO.output(IN1,GPIO.LOW)
+        GPIO.output(IN2,GPIO.LOW)
+        GPIO.cleanup()
