@@ -1,0 +1,65 @@
+int led = 13;
+
+int state = LOW; int val = 0;
+
+int PIR_output = 2;
+
+int buzzer = 12;
+
+void setup()
+
+serial. println("20dx07");
+
+serial.println("Welcome to Movement Detection");
+
+serial.begin(9600);
+
+pinMode(led, OUTPUT);
+
+pinMode(PIR_output, INPUT);
+
+G
+
+void loop() {
+
+val digitalRead(PIR_output);
+
+}
+
+if(val==HIGH) {
+
+digitalWrite(led, HIGH);
+
+delay(500);
+
+if (state== LOW){
+
+else{
+
+}
+
+}
+
+serial.println("Motion Detected!");
+
+state = HIGH;
+
+digitalWrite(buzzer, HIGH);
+
+digitalWrite(led, LOW);
+
+digitalWrite(buzzer, LOW);
+
+}
+
+delay(500);
+
+if(state==HIGH) {
+
+}
+
+serial.println("Motion Stopped! Scanning");
+
+serial.println("\n");
+
+state= LOW;
