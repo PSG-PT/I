@@ -1,0 +1,62 @@
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(7, 8);
+String name = "DCE Department";
+int state = LOW;                                         	 
+int val = 0;                                                 	 
+int PIR_output=2;                                   	 
+                                       	 
+void setup() {
+	pinMode(led, OUTPUT);    
+	pinMode(PIR_output, INPUT);     	 
+	Serial.begin(9600);                       	 
+	Serial.println("20DX15 , 20DX17");
+	Serial.println("Welcome to Home Security");
+	mySerial.begin(9600);
+}
+void loop()
+{
+	val = digitalRead(PIR_output);                   	 
+	if (val == HIGH)
+	{                                   	 
+    	digitalWrite(led, HIGH);                         	 
+    	digitalWrite(buzzer, HIGH);                 	 
+    	delay(100);                                         	 
+    	if (state == LOW)
+    	{
+         	Serial.println("Motion detected!");
+         	mySerial.println("AT");
+         	updateSerial();
+         	mySerial.println("AT+CMGF=1");
+         	updateSerial();
+         	mySerial.println("AT+CMGS=\"+919994771219\"");
+         	updateSerial();
+         	mySerial.print("Intruder Detected in "+name);
+         	updateSerial();
+         	mySerial.write((char)26);
+         	state = HIGH;                             	 
+     	}
+ 	}else
+ 	{
+       	digitalWrite(led, LOW);                 	 
+       	digitalWrite(buzzer, LOW);               	 
+       	delay(200);                                             	 
+       	if (state == HIGH){
+             	Serial.println("Motion stopped! Scanning");
+             	Serial.println("/n");
+              	state = LOW;                           	 
+       	}
+  	}
+}
+
+void updateSerial()
+{
+	delay(500);
+	while (Serial.available())
+	{
+    	mySerial.write(Serial.read());
+	}
+	while(mySerial.available())
+	{
+    	Serial.write(mySerial.read());
+	}
+}
