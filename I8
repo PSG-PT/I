@@ -1,0 +1,19 @@
+from gpiozero import MCP3008, PWMLED
+
+from time import sleep
+
+1dr = MCP3008(0)
+
+led PWMLED(17) print("20dx15, 20dx16,20dx19")
+
+while True:
+
+if(ldr.value < 0.6):
+
+led.value = 1 print ("LED ON %10.9F" % 1dr.value)
+
+else:
+
+led.value = 0 print ("LED OFF - %10.9F" % 1dr.value)
+
+sleep(2)
