@@ -1,0 +1,28 @@
+import RPi.GPIO as GPIO 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(17, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(24, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+flow_count=0; 
+consumed=0;
+print(“20dx07”)
+def my_callback(channel):
+#print ("Rising edge detected on 17" ) 
+global flow_count
+global consumed flow_count += 1 
+#print(flow_count)
+consumed = round( float (flow_count/450), 2) 
+print("Consumed litres = ",consumed)
+GPIO.add_event_detect(17, GPIO.RISING, callback=my_callback, bouncetime=100)
+try:
+GPIO.wait_for_edge(24, GPIO.RISING)
+except KeyboardInterrupt: GPIO.cleanup()
+GPIO.cleanup()
+
+
+
+
+
+
+
+
+
