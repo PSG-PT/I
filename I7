@@ -16,6 +16,8 @@ camera.stop_preview() print(image has been captured successfully !!!")
 
 print("20dx07")
 
+
+Video file program;
 from picameral import Picamera2, Preview
 
 import time
